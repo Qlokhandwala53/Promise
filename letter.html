@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Promise 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Georgia,serif;
+  text-align:center;
+  color:white;
+  padding:20px;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("QA.jpg") center/cover no-repeat;
+  overflow-x:hidden;
+}
+
+/* Heartbeat glow */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle, rgba(255,0,90,0.2), transparent 70%);
+  animation:heartbeat 2s infinite;
+  z-index:-1;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1);opacity:0.4;}
+  50%{transform:scale(1.05);opacity:0.8;}
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  background:rgba(0,0,0,0.6);
+  padding:25px;
+  border-radius:20px;
+  backdrop-filter:blur(8px);
+}
+
+button{
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:#ff1493;
+  color:white;
+  margin-top:20px;
+  box-shadow:0 0 15px #ff69b4;
+}
+
+/* Petals */
+.petal{
+  position:fixed;
+  top:-10px;
+  font-size:18px;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);opacity:0;}
+}
+
+/* Fireworks */
+.fire{
+  position:fixed;
+  font-size:22px;
+  animation:boom 1s forwards;
+}
+@keyframes boom{
+  from{transform:scale(0);opacity:1;}
+  to{transform:scale(3);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>For My Arefa 💕</h2>
+
+<p id="counter"></p>
+
+<p id="text"></p>
+
+<button onclick="celebrate()">I Choose You 💖</button>
+
+</div>
+
+<audio id="music" loop>
+  <source src="Until I Found You.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* iOS music unlock */
+document.body.addEventListener("click",()=>{
+  document.getElementById("music").play();
+},{once:true});
+
+/* Engagement Counter */
+const startDate = new Date("October 11, 2025").getTime();
+setInterval(()=>{
+  const now = new Date().getTime();
+  const days = Math.floor((now-startDate)/(1000*60*60*24));
+  document.getElementById("counter").innerHTML=
+  "Engaged for "+days+" beautiful days 💍";
+},1000);
+
+/* Typewriter */
+const message = `
+My love,
+
+I promise to love you in every situation.
+I promise to control my anger and grow better for us.
+I will never cheat, never lie, and never break your trust.
+
+Even the little things that annoy me —
+I love them because they are part of you.
+
+I choose you today.
+I choose you tomorrow.
+I choose you forever.
+`;
+
+let i=0;
+function type(){
+  if(i<message.length){
+    document.getElementById("text").innerHTML+=message.charAt(i);
+    i++;
+    setTimeout(type,35);
+  }
+}
+type();
+
+/* Rose petals */
+setInterval(()=>{
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerText="🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(Math.random()*3+4)+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),7000);
+},300);
+
+/* Celebrate */
+function celebrate(){
+  for(let i=0;i<25;i++){
+    const f=document.createElement("div");
+    f.className="fire";
+    f.innerText="✨";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
+
+  alert("📸 Take a screenshot and send it to me ❤️");
+
+  setTimeout(()=>{
+    window.location.href="https://wa.me/918238519348?text="+
+    encodeURIComponent("I Choose You Forever 💖");
+  },2000);
+}
+</script>
+
+</body>
+</html>
