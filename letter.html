@@ -13,7 +13,8 @@ body{
   padding:20px;
   background:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url("QA.jpg") center/cover no-repeat;
+    url("QA.jpeg") center/cover no-repeat;
+  background-size: cover;
   overflow-x:hidden;
 }
 
@@ -39,6 +40,8 @@ body::before{
   padding:25px;
   border-radius:20px;
   backdrop-filter:blur(8px);
+  position:relative;
+  z-index:2;
 }
 
 button{
@@ -65,12 +68,15 @@ button{
 /* Fireworks */
 .fire{
   position:fixed;
-  font-size:22px;
-  animation:boom 1s forwards;
+  font-size:40px; /* bigger for visibility */
+  pointer-events:none;
+  animation:boom 1.2s forwards;
+  z-index:1;
 }
 @keyframes boom{
-  from{transform:scale(0);opacity:1;}
-  to{transform:scale(3);opacity:0;}
+  0%{transform:scale(0);opacity:1;}
+  50%{transform:scale(1.5);opacity:1;}
+  100%{transform:scale(3);opacity:0;}
 }
 </style>
 </head>
@@ -90,7 +96,7 @@ button{
 </div>
 
 <audio id="music" loop>
-  <source src="Until I Found You.mp3" type="audio/mpeg">
+  <source src="Pardesiya.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -146,16 +152,16 @@ setInterval(()=>{
   setTimeout(()=>p.remove(),7000);
 },300);
 
-/* Celebrate */
+/* Celebrate - Fireworks + WhatsApp */
 function celebrate(){
   for(let i=0;i<25;i++){
     const f=document.createElement("div");
     f.className="fire";
-    f.innerText="✨";
+    f.innerText=["✨","🎇","💥"][Math.floor(Math.random()*3)];
     f.style.left=Math.random()*100+"vw";
     f.style.top=Math.random()*100+"vh";
     document.body.appendChild(f);
-    setTimeout(()=>f.remove(),1000);
+    setTimeout(()=>f.remove(),1500);
   }
 
   alert("📸 Take a screenshot and send it to me ❤️");
