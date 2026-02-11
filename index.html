@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Promise To Aruu. 💍</title>
+<title>My Promise To My Love 💍</title>
 
 <style>
 body {
@@ -22,7 +22,7 @@ body {
   position: relative;
 }
 
-/* Heartbeat effect */
+/* Heartbeat background */
 .overlay::before {
   content: "";
   position: fixed;
@@ -120,10 +120,12 @@ button {
 <div class="overlay">
 
 <h2>💖 Promise Day Special 💖</h2>
-<h3>For My Beautiful HER_NAME 💍</h3>
+<h3>For My Beautiful Aruu 💍</h3>
 
 <p>Tap below to reveal my heart...</p>
-<button class="reveal-btn" onclick="reveal()">Tap To Reveal Promise 💌</button>
+<button id="revealBtn" class="reveal-btn">
+Tap To Reveal Promise 💌
+</button>
 
 <div class="container" id="letter">
 
@@ -136,7 +138,7 @@ button {
 
 <div class="signature">
 With all my love,<br>
-Qusai Lokhandwala 💞
+Qusai 💞
 </div>
 
 <button class="choose-btn" onclick="celebrate()">
@@ -152,10 +154,16 @@ I Choose You 💖
 
 <script>
 
-/* Start music on first interaction (iPhone safe) */
+/* Safe music start for iPhone */
 document.addEventListener("click", function() {
-  document.getElementById("bgMusic").play();
+  document.getElementById("bgMusic").play().catch(()=>{});
 }, { once: true });
+
+/* Reveal Button Fix */
+document.getElementById("revealBtn").addEventListener("click", function() {
+  document.getElementById("letter").style.display = "block";
+  typeWriter();
+});
 
 /* Typewriter */
 const message = `
@@ -166,7 +174,7 @@ I promise to control my anger and grow better for us.
 I will never cheat, never lie, and never break your trust.
 
 Even the little things that annoy me —
-I love them, because they are part of you.
+I love them because they are part of you.
 
 I choose you today.
 I choose you tomorrow.
@@ -180,11 +188,6 @@ function typeWriter() {
     i++;
     setTimeout(typeWriter, 35);
   }
-}
-
-function reveal() {
-  document.getElementById("letter").style.display = "block";
-  typeWriter();
 }
 
 /* Countdown */
@@ -208,7 +211,7 @@ setInterval(() => {
   setTimeout(() => petal.remove(), 7000);
 }, 300);
 
-/* Celebrate */
+/* Celebrate + Screenshot + WhatsApp */
 function celebrate() {
 
   for (let i = 0; i < 25; i++) {
